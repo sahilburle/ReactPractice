@@ -16,6 +16,24 @@ function App() {
 
   }
 
+  const addTodo = (title, desc)=>{
+    console.log("todo is adding", title, desc);
+    if(todos.length==0){
+      sno = 0;
+    }
+    else{
+      sno = todos[todos.length-1].sno + 1;
+    }
+    let sno = todos[todos.length-1].sno + 1;
+  const myTodo = {
+    sno: sno,
+    title: title,
+    desc: desc
+  }
+  setTodos([...todos, myTodo]);
+  console.log(myTodo);
+}
+
   const [todos, setTodos] = useState([
 
     {
@@ -38,7 +56,7 @@ function App() {
   return (
     <>
       <Header title="My TodosList" searchBar={true}/>
-      <AddTodo/>
+      <AddTodo AddTodo={AddTodo}/>
       <Todos todos={todos} onDelete={onDelete}/>
       <Footer/>
     </>
